@@ -25,19 +25,25 @@ export const Navbar = ({ isDarkMode, onToggleDarkMode }: NavbarProps) => {
         
         {/* Branding */}
         <div className="flex-shrink-0">
-          <Link to="/" className="flex items-center gap-5 group">
-            <div className="shrink-0 transition-transform group-hover:scale-105">
+          <Link to="/" className="flex items-center gap-3 md:gap-5 group">
+            <div className="flex items-center gap-3 shrink-0 transition-transform group-hover:scale-105">
               <img 
-                src="https://img.sanishtech.com/u/88812ac7ad49e08ca56b9c2ae4246c7a.png" 
-                alt="JJCET Logo" 
-                className="h-[50px] md:h-[60px] w-auto brightness-110"
+                src="/images/JJCET-logo.png" 
+                alt="JJ College Logo" 
+                className="h-[40px] md:h-[50px] w-auto"
+              />
+              <div className="w-[1px] h-8 bg-slate-200 dark:bg-slate-700 hidden md:block" />
+              <img 
+                src="/images/hub-logo.png" 
+                alt="JJCET Hub Logo" 
+                className="h-[45px] md:h-[55px] w-auto brightness-110"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-black text-primary dark:text-white tracking-tighter leading-none uppercase">
+            <div className="flex flex-col hidden lg:flex">
+              <span className="text-xl font-black text-primary dark:text-white tracking-tighter leading-none uppercase">
                 JJCET
               </span>
-              <span className="text-[10px] md:text-[0.7rem] text-[#C8581A] font-black uppercase tracking-[0.2em] mt-1 whitespace-nowrap">
+              <span className="text-[10px] text-[#C8581A] font-black uppercase tracking-[0.2em] mt-1 whitespace-nowrap">
                 Incubation Hub
               </span>
             </div>
@@ -100,15 +106,16 @@ export const Navbar = ({ isDarkMode, onToggleDarkMode }: NavbarProps) => {
             exit={{ opacity: 0, x: "100%" }}
             className="fixed inset-0 bg-white dark:bg-slate-900 z-[200] p-8 md:hidden flex flex-col"
           >
-            <div className="flex justify-between items-center mb-16">
-               <div className="flex items-center gap-4">
-                  <img src="https://img.sanishtech.com/u/88812ac7ad49e08ca56b9c2ae4246c7a.png" alt="Logo" className="h-10 w-auto" />
-                  <span className="text-xl font-black text-primary dark:text-white uppercase tracking-tighter">JJCET HUB</span>
-               </div>
-               <button onClick={() => setIsMobileMenuOpen(false)} className="p-3 bg-slate-50 dark:bg-slate-800 text-primary dark:text-white rounded-xl">
-                 <X className="w-6 h-6" />
-               </button>
-            </div>
+             <div className="flex justify-between items-center mb-16">
+                <div className="flex items-center gap-3">
+                   <img src="/images/hub-logo.png" alt="Hub Logo" className="h-10 w-auto" />
+                   <div className="w-[1px] h-6 bg-slate-200 dark:bg-slate-800" />
+                   <img src="/images/JJCET-logo.png" alt="College Logo" className="h-8 w-auto" />
+                </div>
+                <button onClick={() => setIsMobileMenuOpen(false)} className="p-3 bg-slate-50 dark:bg-slate-800 text-primary dark:text-white rounded-xl">
+                  <X className="w-6 h-6" />
+                </button>
+             </div>
 
             <div className="flex flex-col gap-8">
               {navLinks.map((link) => (
