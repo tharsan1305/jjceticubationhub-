@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Times New Roman", Times, serif;
+  --font-display: "Times New Roman", Times, serif;
+  
+  --color-primary: #1A1A1A;
+  --color-primary-dark: #000000;
+  --color-primary-light: #FFFFFF;
+  --color-secondary: #C2410C;
+  --color-accent: #000000;
+  --color-border: #E5E7EB;
+  --color-text-muted: #4B5563;
+  --color-text-dark: #1A1A1A;
+}
+
+@layer base {
+  :root {
+    --bg-color: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --text-color: #1A1A1A;
+    --border-color: #E5E7EB;
+  }
+
+  .dark {
+    --bg-color: #0a1628;
+    --card-bg: #1a2a4a;
+    --text-color: #FFFFFF;
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    @apply antialiased font-sans selection:bg-secondary/10 scroll-smooth transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    color: var(--text-color);
+  }
+}
+
+.glass-card {
+  background-color: var(--card-bg);
+  @apply backdrop-blur-xl border border-white/40 rounded-[2.5rem] p-10 transition-all duration-700 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)];
+}
+
+.premium-card {
+  background-color: var(--card-bg);
+  @apply rounded-[2.5rem] p-10 border transition-all duration-700 hover:shadow-[0_40px_80px_-25px_rgba(0,0,0,0.1)] hover:-translate-y-3;
+  border-color: var(--border-color);
+}
+
+.btn-premium {
+  @apply px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all duration-500 cursor-pointer active:scale-95 flex items-center justify-center gap-3 active:duration-150;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-br from-primary via-primary to-secondary;
+}
+
+.section-padding {
+  @apply py-32 md:py-48;
+}
+
+.container-custom {
+  @apply container mx-auto px-8 md:px-12 lg:px-24;
+}
+
+.noise-overlay {
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  @apply opacity-[0.03] pointer-events-none;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Skeleton Shimmer */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+}
+
+.skeleton-shimmer {
+  @apply relative overflow-hidden bg-slate-200 dark:bg-slate-700;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  @apply absolute inset-0;
+  background: linear-gradient(
+    90deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 75%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
